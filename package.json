@@ -14,7 +14,7 @@
     "lint:fix": "npm run lint -- --fix",
     "start": "better-npm-run start",
     "dev": "better-npm-run dev",
-    "test": "better-npm-run test",
+    "test": "better-npm-run test"
   },
   "betterScripts": {
     "compile": {
