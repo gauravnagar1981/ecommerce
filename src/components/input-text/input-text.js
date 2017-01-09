@@ -1,17 +1,19 @@
 import React, {PropTypes} from 'react';
+import './input-text.scss';
 
 const InputText = (props) => {
   const {
-    id, type
+    id,
+    type,
+    onBlur,
+    isValidInput
   } = props;
-
-  if(type.toLowerCase() === 'email') {
-
-  }
-
+  const inputClassName = `text-input ${isValidInput ? '' : ' text-input--error'}`;
 
   return <div>
-    <input id={id}/>
+    <input className={inputClassName} id={id} onBlur={onBlur}
+    />
+    {isValidInput ? null : <span className="span--error">invalid input</span>}
   </div>
 };
 
