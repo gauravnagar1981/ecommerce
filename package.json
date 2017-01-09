@@ -107,12 +107,11 @@
     "yargs": "^6.3.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.1.0",
-    "babel-plugin-istanbul": "^3.0.0",
-    "chai": "^3.4.1",
-    "chai-as-promised": "^6.0.0",
-    "chai-enzyme": "^0.6.1",
-    "cheerio": "^0.22.0",
+    "babel-eslint": "7.1.0",
+    "babel-plugin-istanbul": "3.0.0",
+    "chai": "3.4.1",
+    "chai-as-promised": "6.0.0",
+    "chai-enzyme": "0.6.1",
     "codecov": "^1.0.1",
     "enzyme": "^2.0.0",
     "eslint": "^3.0.1",
