@@ -1,6 +1,7 @@
 import React from 'react'
 import InputText from '../../../components/input-text/input-text';
 import InputPassword from '../../../components/input-password/input-password';
+import {validate} from './form.validation';
 import './HomeView.scss'
 
 const validateEmail = (email) => {
@@ -14,39 +15,42 @@ export default class HomeView extends React.Component {
     super(props);
     this.state =
     {
-      isValidInput: true,
+      inputError: {},
       isValidPassword: true,
-      inputVal: ''
+
     };
   }
 
   render() {
     const validateInput = (e) => {
-      const error = validateEmail(e.target.value);
-      this.setState({isValidInput: error});
+      const inputValue = e.target.value;
+      validate({email: inputValue}).then(() => this.setState({inputError: {}})).catch((error) => {
+        this.setState({inputError: error})
+      });
     };
 
     const validatePassword = (e) => {
-      const error = e.target.value.length < 8 ? false:true;
+      const error = e.target.value.length < 8 ? false : true;
       this.setState({isValidPassword: error});
     };
 
     return (
       <div>
-        <InputText
-          id='input1'
-          inputVal={this.state.inputVal} //todo
-          type='email'
-          isValidInput={this.state.isValidInput}
-          onBlur={validateInput.bind(this)}
-        />
-        <InputPassword
-          id="inputPassword"
-          isValidPassword={this.state.isValidPassword}
-          onBlur={validatePassword.bind(this)}/>
-
-        <h4>Welcome!</h4>
-      </div>);
+        <form>
+          <div className="mdl-textfield mdl-js-textfield is-upgraded is-invalid is-dirty">
+            <input className="mdl-textfield__input" type="text" id="sample3" />
+              <label className="mdl-textfield__label" for="sample3">Text...</label>
+          </div>
+        </form>
+        <form>
+          <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input className="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" />
+              <label className="mdl-textfield__label" for="sample4">Number...</label>
+              <span className="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </form>
+      </div>
+  );
   }
 
-}
+  }
