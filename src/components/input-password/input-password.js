@@ -14,6 +14,7 @@ const InputPassword = (props) => {
     <input id={id} type="password" onBlur={onBlur} className={inputClassName} />
     {hasError ? <span className="span--error">{error.message}</span> :null }
   </div>
+  
 };
 
 InputPassword.propTypes = {
