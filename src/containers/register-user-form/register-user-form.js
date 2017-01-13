@@ -1,11 +1,7 @@
 import React,{Component} from 'react';
 import InputText from '../../components/input-text/input-text';
 import InputPassword from '../../components/input-password/input-password';
-import validateEmail from './register-user-form-email-validator';
-import validatePassword from './register-user-form-password-validator';
-import validateForename from './register-user-form-forename-validator';
-import validateSurname from './register-user-form-surname-validator';
-import validateOrganizationName from './register-user-form-organization-validator';
+import validate from './register-user-form-validation';
 import './register-user-from.scss';
 
 export default class RegisterUser extends Component{
@@ -23,41 +19,41 @@ export default class RegisterUser extends Component{
   render(){
     const validateEmailInput = (e) => {
       const inputValue = e.target.value;
-      validateEmail({email: inputValue}).then(() => this.setState({inputEmailError: {}})).catch((error) => {
+      validate({email: inputValue}).then(() => this.setState({inputEmailError: {}})).catch((error) => {
         this.setState({inputEmailError: error})
       });
     };
 
     const validatePasswordInput = (e) => {
       const inputValue = e.target.value;
-      validatePassword({password: inputValue}).then(() => this.setState({inputPasswordError: {}})).catch((error) => {
+      validate({password: inputValue}).then(() => this.setState({inputPasswordError: {}})).catch((error) => {
         this.setState({inputPasswordError: error})
       });
     };
 
     const validateForenameInput = (e) => {
       const inputValue = e.target.value;
-      validateForename({forename: inputValue}).then(() => this.setState({inputForenameError: {}})).catch((error) => {
+      validate({forename: inputValue}).then(() => this.setState({inputForenameError: {}})).catch((error) => {
         this.setState({inputForenameError: error})
       });
     };
 
     const validateSurnameInput = (e) => {
       const inputValue = e.target.value;
-      validateSurname({surname: inputValue}).then(() => this.setState({inputSurnameError: {}})).catch((error) => {
+      validate({surname: inputValue}).then(() => this.setState({inputSurnameError: {}})).catch((error) => {
         this.setState({inputSurnameError: error})
       });
     };
 
     const validateOrganizationNameInput = (e) => {
       const inputValue = e.target.value;
-      validateOrganizationName({organizationName: inputValue}).then(() => this.setState({inputOrganizationError: {}})).catch((error) => {
+      validate({organizationName: inputValue}).then(() => this.setState({inputOrganizationError: {}})).catch((error) => {
         this.setState({inputOrganizationError: error})
       });
     };
     return(
       <div className="main-content">
-        <div className="textInput">
+        <div className="form-row">
           <label for="emailAddress" className="label-text" >E-mail</label>
           <InputText
             id='emailAddress'
@@ -66,14 +62,14 @@ export default class RegisterUser extends Component{
             placeholder='you@yourdomain.com'
             error={this.state.inputEmailError} />
         </div>
-        <div className="password">
+        <div className="form-row">
           <label for="password-text" className="label-text">Password</label>
           <InputPassword
             id="password"
             onBlur={validatePasswordInput.bind(this)}
             error={this.state.inputPasswordError} />
         </div>
-        <div className="textInput">
+        <div className="form-row">
           <label for="forename" className="label-text">Name</label>
           <InputText
             id='forename'
@@ -81,7 +77,7 @@ export default class RegisterUser extends Component{
             placeholder='First'
             error={this.state.inputForenameError} />
         </div>
-        <div className="textInput">
+        <div className="form-row">
           <label for="surname" className="label-text"></label>
           <InputText
             id='surname'
@@ -89,7 +85,7 @@ export default class RegisterUser extends Component{
             placeholder='Last'
             error={this.state.inputSurnameError} />
         </div>
-        <div className="textInput">
+        <div className="form-row">
           <label for="surname" className="label-text">Organisation name</label>
           <InputText
             id='organisationName'
