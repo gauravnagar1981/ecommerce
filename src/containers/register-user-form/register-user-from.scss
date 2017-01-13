@@ -1,20 +1,12 @@
+@import '../../styles/variables';
 
-.mainContent {
-  background-color: #fff;
+.main-content {
+  background-color: $content-background;
   width:400px;
   margin:10px ;
 }
 
-.textInput {
-  background-color: #fff;
-  width:250px;
-  margin:10px ;
-  text-align: left;
-
-}
-
-.password {
-  background-color: #fff;
+input {
   width:250px;
   margin:10px ;
   text-align: left;

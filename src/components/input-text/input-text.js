@@ -10,7 +10,7 @@ const InputText = (props) => {
   } = props;
 
   const hasError = error && error.message && error.message.length > 0;
-  const inputClassName = hasError? 'text-input text-input--error' : 'text-input';
+  const inputClassName = `text-input ${hasError ? 'text-input--error' : ''}`;
 
   return <div>
 

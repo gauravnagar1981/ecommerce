@@ -56,7 +56,7 @@ export default class RegisterUser extends Component{
       });
     };
     return(
-      <div className="mainContent">
+      <div className="main-content">
         <div className="textInput">
           <label for="emailAddress" className="label-text" >E-mail</label>
           <InputText
