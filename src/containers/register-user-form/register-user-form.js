@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import InputText from '../../components/input-text/input-text';
 import InputPassword from '../../components/input-password/input-password';
-import validate from './register-user-form-validation';
+import {validate} from './register-user-form-validation';
 import './register-user-from.scss';
 
 export default class RegisterUser extends Component{
@@ -18,8 +18,9 @@ export default class RegisterUser extends Component{
   }
   render(){
     const validateEmailInput = (e) => {
+      debugger;
       const inputValue = e.target.value;
-      validate({email: inputValue}).then(() => this.setState({inputEmailError: {}})).catch((error) => {
+       validate({email: inputValue}).then(() => this.setState({inputEmailError: {}})).catch((error) => {
         this.setState({inputEmailError: error})
       });
     };
