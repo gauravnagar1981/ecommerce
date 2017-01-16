@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import InputText from '../../components/input-text/input-text';
 import InputPassword from '../../components/input-password/input-password';
-import {validate} from './register-user-form-validation';
+import {validate, getErrorMessage} from './register-user-form-validation';
 import './register-user-from.scss';
 
 export default class RegisterUser extends Component{
@@ -15,41 +15,53 @@ export default class RegisterUser extends Component{
         inputSurnameError: {},
         inputOrganizationError: {}
       };
+      this.formModel = {
+        email: 'sample@sample.com',
+        forename: 'Forename',
+        surname: 'Surname',
+        password: 'password',
+        organizationName: 'OrganizationName',
+      }
   }
   render(){
     const validateEmailInput = (e) => {
-      debugger;
-      const inputValue = e.target.value;
-       validate({email: inputValue}).then(() => this.setState({inputEmailError: {}})).catch((error) => {
-        this.setState({inputEmailError: error})
+      this.formModel.email = e.target.value;
+       validate(this.formModel).then(() => this.setState({inputEmailError: {}})).catch((error) => {
+        // debugger;
+         const mappedError = getErrorMessage(error);
+         this.setState({inputEmailError: mappedError['email']})
       });
     };
 
     const validatePasswordInput = (e) => {
-      const inputValue = e.target.value;
-      validate({password: inputValue}).then(() => this.setState({inputPasswordError: {}})).catch((error) => {
-        this.setState({inputPasswordError: error})
+      this.formModel.password = e.target.value;
+      validate(this.formModel).then(() => this.setState({inputPasswordError: {}})).catch((error) => {
+        const mappedError = getErrorMessage(error);
+        this.setState({inputPasswordError: mappedError['password']})
       });
     };
 
     const validateForenameInput = (e) => {
-      const inputValue = e.target.value;
-      validate({forename: inputValue}).then(() => this.setState({inputForenameError: {}})).catch((error) => {
-        this.setState({inputForenameError: error})
+      this.formModel.forename = e.target.value;
+      validate(this.formModel).then(() => this.setState({inputForenameError: {}})).catch((error) => {
+        const mappedError = getErrorMessage(error);
+        this.setState({inputForenameError: mappedError['forename']})
       });
     };
 
     const validateSurnameInput = (e) => {
-      const inputValue = e.target.value;
-      validate({surname: inputValue}).then(() => this.setState({inputSurnameError: {}})).catch((error) => {
-        this.setState({inputSurnameError: error})
+      this.formModel.surname = e.target.value;
+      validate(this.formModel).then(() => this.setState({inputSurnameError: {}})).catch((error) => {
+        const mappedError = getErrorMessage(error);
+        this.setState({inputSurnameError: mappedError['surname']})
       });
     };
 
     const validateOrganizationNameInput = (e) => {
-      const inputValue = e.target.value;
-      validate({organizationName: inputValue}).then(() => this.setState({inputOrganizationError: {}})).catch((error) => {
-        this.setState({inputOrganizationError: error})
+      this.formModel.organizationName = e.target.value;
+      validate(this.formModel).then(() => this.setState({inputOrganizationError: {}})).catch((error) => {
+        const mappedError = getErrorMessage(error);
+        this.setState({inputOrganizationError: mappedError['organizationName']})
       });
     };
     return(
