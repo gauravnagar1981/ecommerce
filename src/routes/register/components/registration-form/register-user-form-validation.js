@@ -13,11 +13,13 @@ export function validate(model){
 };
 
 export function getErrorMessage(error){
+
   const validation = error.inner.reduce((a, b) => {
     a[b.path] = {
       message: b.message
     };
     return a;
   }, {});
+
   return validation;
 };

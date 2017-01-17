@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-import InputText from '../../components/input-text/input-text';
-import InputPassword from '../../components/input-password/input-password';
+import InputText from './../../../../components/input-text/input-text';
+import InputPassword from './../../../../components/input-password/input-password';
 import {validate, getErrorMessage} from './register-user-form-validation';
 import './register-user-from.scss';
 
